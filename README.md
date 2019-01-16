@@ -1,2 +1,2 @@
 # GitLab Line Notify
-Line Notify with GitLab Webhooks Trigger
+Spring Boot Project for Line Notify with GitLab Webhooks Trigger
