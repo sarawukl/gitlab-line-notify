@@ -1,9 +1,9 @@
-package com.sarawukl.gitlabxline.callback.service;
+package com.sarawukl.gitlabxline.service;
 
-import com.sarawukl.gitlabxline.callback.model.IssueEvent;
-import com.sarawukl.gitlabxline.callback.model.MergeRequestEvent;
-import com.sarawukl.gitlabxline.callback.model.PushEvent;
-import com.sarawukl.gitlabxline.callback.model.PushTagEvent;
+import com.sarawukl.gitlabxline.model.IssueEvent;
+import com.sarawukl.gitlabxline.model.MergeRequestEvent;
+import com.sarawukl.gitlabxline.model.PushEvent;
+import com.sarawukl.gitlabxline.model.PushTagEvent;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;

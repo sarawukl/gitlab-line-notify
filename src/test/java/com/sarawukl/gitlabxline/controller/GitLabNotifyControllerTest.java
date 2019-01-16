@@ -1,6 +1,6 @@
-package com.sarawukl.gitlabxline.callback.controller;
+package com.sarawukl.gitlabxline.controller;
 
-import com.sarawukl.gitlabxline.callback.service.NotifyService;
+import com.sarawukl.gitlabxline.service.NotifyService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

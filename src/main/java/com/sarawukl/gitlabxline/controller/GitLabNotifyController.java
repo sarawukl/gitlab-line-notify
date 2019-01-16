@@ -1,11 +1,11 @@
-package com.sarawukl.gitlabxline.callback.controller;
+package com.sarawukl.gitlabxline.controller;
 
-import com.sarawukl.gitlabxline.callback.handler.InvalidHeaderException;
-import com.sarawukl.gitlabxline.callback.model.IssueEvent;
-import com.sarawukl.gitlabxline.callback.model.MergeRequestEvent;
-import com.sarawukl.gitlabxline.callback.model.PushEvent;
-import com.sarawukl.gitlabxline.callback.model.PushTagEvent;
-import com.sarawukl.gitlabxline.callback.service.NotifyService;
+import com.sarawukl.gitlabxline.handler.InvalidHeaderException;
+import com.sarawukl.gitlabxline.model.IssueEvent;
+import com.sarawukl.gitlabxline.model.MergeRequestEvent;
+import com.sarawukl.gitlabxline.model.PushEvent;
+import com.sarawukl.gitlabxline.model.PushTagEvent;
+import com.sarawukl.gitlabxline.service.NotifyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

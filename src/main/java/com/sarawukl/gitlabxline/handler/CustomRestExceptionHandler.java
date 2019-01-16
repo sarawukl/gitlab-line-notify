@@ -1,4 +1,4 @@
-package com.sarawukl.gitlabxline.callback.handler;
+package com.sarawukl.gitlabxline.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

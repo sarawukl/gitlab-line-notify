@@ -1,4 +1,4 @@
-package com.sarawukl.gitlabxline.callback.model;
+package com.sarawukl.gitlabxline.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

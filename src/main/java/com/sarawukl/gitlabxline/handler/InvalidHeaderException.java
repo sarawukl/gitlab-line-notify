@@ -1,4 +1,4 @@
-package com.sarawukl.gitlabxline.callback.handler;
+package com.sarawukl.gitlabxline.handler;
 
 public class InvalidHeaderException extends Exception {
 
