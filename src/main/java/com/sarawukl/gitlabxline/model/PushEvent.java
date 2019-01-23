@@ -17,7 +17,7 @@ public class PushEvent extends GitLabPush {
     public String toString() {
 
         StringBuilder gitEvent = new StringBuilder();
-        String author = this.getCommits().stream().findFirst().orElse(null).getAuthor().toString();
+        String author = this.getCommits().stream().findFirst().orElseGet(null).getAuthor().toString();
 
         gitEvent.append(String.format("\n  Project: %s", this.getProject().getName()));
         gitEvent.append(String.format("\n  Event: %s", this.getObjectKind()));

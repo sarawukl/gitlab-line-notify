@@ -25,8 +25,10 @@ public class GitLabNotifyController {
 
     @PostMapping("/push")
     public ResponseEntity pushNotify(@RequestHeader(value = "Line-Token") String lineToken, @RequestHeader(value = "X-Gitlab-Event") String gitLabEvent, @RequestBody PushEvent data) throws InvalidHeaderException {
-        System.out.println(lineToken);
+
+        log.debug("Post Push Event");
         if (!gitLabEvent.equals("Push Hook") || gitLabEvent.equals(null)) {
+            log.debug("Invalid Header");
             throw new InvalidHeaderException(gitLabEvent);
         }
         return notifyService.pushNotify(lineToken, data);
@@ -34,6 +36,8 @@ public class GitLabNotifyController {
 
     @PostMapping("/tag")
     public ResponseEntity pushTagNotify(@RequestHeader(value = "Line-Token") String lineToken, @RequestHeader(value = "X-Gitlab-Event") String gitLabEvent, @RequestBody PushTagEvent data) throws InvalidHeaderException {
+
+        log.debug("Push Tag Event");
         if (!gitLabEvent.equals("Tag Push Hook") || gitLabEvent.equals(null)) {
             throw new InvalidHeaderException(gitLabEvent);
         }
@@ -42,7 +46,10 @@ public class GitLabNotifyController {
 
     @PostMapping("/issue")
     public ResponseEntity issueNotify(@RequestHeader(value = "Line-Token") String lineToken, @RequestHeader(value = "X-Gitlab-Event") String gitLabEvent, @RequestBody IssueEvent data) throws InvalidHeaderException {
+
+        log.debug("Issue Event");
         if (!gitLabEvent.equals("Issue Hook") || gitLabEvent.equals(null)) {
+            log.debug("Invalid Header");
             throw new InvalidHeaderException(gitLabEvent);
         }
         return notifyService.issueNotify(lineToken, data);
@@ -50,7 +57,10 @@ public class GitLabNotifyController {
 
     @PostMapping("/merge")
     public ResponseEntity mergeRequestNotify(@RequestHeader(value = "Line-Token") String lineToken, @RequestHeader(value = "X-Gitlab-Event") String gitLabEvent, @RequestBody MergeRequestEvent data) throws InvalidHeaderException {
+
+        log.debug("Merge Request Event");
         if (!gitLabEvent.equals("Merge Request Hook") || gitLabEvent.equals(null)) {
+            log.debug("Invalid Header");
             throw new InvalidHeaderException(gitLabEvent);
         }
         return notifyService.mergeRequestNotify(lineToken, data);

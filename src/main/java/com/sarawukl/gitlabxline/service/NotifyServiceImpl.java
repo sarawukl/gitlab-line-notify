@@ -50,10 +50,10 @@ public class NotifyServiceImpl implements NotifyService {
         headers.add("Content-Type", contentType);
         headers.add("Content-Length", "" + data.getBytes().length);
         headers.add("Authorization", bearerAuth);
-        RestTemplate template = new RestTemplate();
         RequestEntity request = new RequestEntity(
                 data, headers, HttpMethod.POST, lineUrl);
-        ResponseEntity responseEntity = template.exchange(request, String.class);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity responseEntity = restTemplate.exchange(request, String.class);
         return responseEntity;
     }
 

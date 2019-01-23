@@ -1,0 +1,4 @@
+logging:
+  level:
+    ROOT: ${LOGGING_LEVEL}
+  file: ${LOG_FILE}

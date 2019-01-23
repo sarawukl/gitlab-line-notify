@@ -2,6 +2,7 @@ package com.sarawukl.gitlabxline.handler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,16 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @ControllerAdvice
+@Slf4j
 public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
+        log.error(ex.getMessage(), ex);
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
         int code = httpStatus.value();
-        String message = "Object not valid";
+        String message = "object not valid";
 
         ReponseHandler apiError = new ReponseHandler(code, message);
         return new ResponseEntity<Object>(
@@ -34,6 +37,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
             MissingServletRequestParameterException ex, HttpHeaders headers,
             HttpStatus status, WebRequest request) {
 
+        log.error(ex.getMessage(), ex);
         String message = ex.getParameterName() + " parameter is missing";
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
@@ -47,6 +51,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(
             MethodArgumentTypeMismatchException ex, WebRequest request) {
 
+        log.error(ex.getMessage(), ex);
         String message =
                 ex.getName() + " should be of type " + ex.getRequiredType().getName();
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
@@ -62,6 +67,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleInvalidHeader(
             InvalidHeaderException ex, WebRequest request) {
 
+        log.error(ex.getMessage(), ex);
         String message = ex.getMessage();
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
@@ -79,6 +85,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
             HttpStatus status,
             WebRequest request) {
 
+        log.error(ex.getMessage(), ex);
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
 
         StringBuilder message = new StringBuilder();
@@ -95,12 +102,13 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({Exception.class})
     public ResponseEntity<Object> handleAll(Exception ex, WebRequest request) {
 
+        log.error(ex.getMessage(), ex);
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
         String error = ex.getMessage() != null ? ex.getMessage() : ex.getClass().getName();
-        String message = String.format("Error occurred : %s", error);
+        String message = String.format("error : %s", error);
         ReponseHandler apiError = new ReponseHandler(
                 httpStatus.value(), message);
-
+        System.out.println(httpStatus.value() + " " + message);
         return new ResponseEntity<Object>(
                 apiError, new HttpHeaders(), httpStatus);
     }
@@ -108,7 +116,7 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     @Data
     @AllArgsConstructor
     public class ReponseHandler {
-        int code;
+        int status;
         String message;
     }
 }

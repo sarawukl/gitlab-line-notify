@@ -1,12 +1,14 @@
 package com.sarawukl.gitlabxline.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
+@Builder
 public class Commit {
 
     @JsonProperty("id")

@@ -16,4 +16,5 @@ public interface NotifyService {
 
     ResponseEntity<String> mergeRequestNotify(String lineToken, MergeRequestEvent mergeRequestEvent);
 
+    ResponseEntity<String> httpPost(String lineToken, String data);
 }
